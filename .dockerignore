@@ -1,0 +1,17 @@
+# Ignore database storage
+data/
+
+# Ignore git
+.git
+.gitignore
+
+# Node modules
+node_modules/
+
+# Laravel cache
+backend/storage
+backend/bootstrap/cache
+
+# Docker artifacts
+*.log
+*.sock
