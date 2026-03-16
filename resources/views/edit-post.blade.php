@@ -1,0 +1,12 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    @livewireStyles
+</head>
+<body>
+    <h1>Edit Post</h1>
+    <livewire:edit-post :post="$post" />
+</body>
+</html>
