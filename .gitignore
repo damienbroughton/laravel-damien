@@ -1,26 +1,42 @@
 *.log
 .DS_Store
+
+# Environment & local config
 .env
-.env.backup
-.env.production
+.env.*
 .phpactor.json
-.phpunit.result.cache
-/.fleet
+auth.json
+Homestead.json
+Homestead.yaml
+
+# IDE / editor
 /.idea
-/.nova
-/.phpunit.cache
 /.vscode
+/.fleet
+/.nova
 /.zed
-/auth.json
+
+# Dependencies & build artifacts
+/vendor
 /node_modules
 /public/build
 /public/hot
+
+# Storage & cache
 /public/storage
 /storage/*.key
+/storage/logs
+/storage/framework
 /storage/pail
-/vendor
-Homestead.json
-Homestead.yaml
+/bootstrap/cache
+
+# PHPUnit / tooling caches
+.phpunit.cache
+.phpunit.result.cache
+
+# OS / misc
 Thumbs.db
+
+# Local database sockets / data
 data/mysql.sock
 docker/data/mysql.sock
