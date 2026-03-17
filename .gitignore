@@ -29,6 +29,7 @@ Homestead.yaml
 /storage/framework
 /storage/pail
 /bootstrap/cache
+/data/
 
 # PHPUnit / tooling caches
 .phpunit.cache
