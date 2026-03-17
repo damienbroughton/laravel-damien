@@ -47,6 +47,11 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the posts for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function posts() {
         return $this->hasMany(Post::class, 'user_id');
     }

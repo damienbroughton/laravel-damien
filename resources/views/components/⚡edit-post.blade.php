@@ -22,10 +22,9 @@ new class extends Component
         $this->body = $post->body;
     }
 
+    // Save the updated post if authrized
     public function save() {
-        if(auth()->user()->id !== $this->post->user_id) {
-            return redirect('/');
-        }
+        $this->authorize('update', $this->post);
 
         $incomingFields = $this->validate();
 
@@ -51,9 +50,13 @@ new class extends Component
             <textarea wire:model="body" wire:model.live.blur="body"></textarea><br>
             @error('body') <span style="color: red; display: block;">{{ $message }}</span> @enderror
         </label><br>
-        <button type="submit">
-            <span wire:loading.remove>Update Post</span>
-            <span wire:loading>loading..</span>      
-        </button>
+        @can('update', $post)
+            <button type="submit">
+                <span wire:loading.remove>Update Post</span>
+                <span wire:loading>loading..</span>      
+            </button>
+        @else
+            <p>You do not have permission to edit this.</p>
+        @endcan
     </form>
 </div>

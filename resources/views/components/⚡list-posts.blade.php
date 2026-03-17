@@ -9,12 +9,11 @@ new class extends Component {
         $this->posts = Post::where('user_id', auth()->id())->get();
     }
 
+    // Delete the post if authorized
     public function delete($postId) {
         $post = Post::findOrFail($postId);
         
-        if ($post->user_id !== auth()->id()) {
-            abort(403);
-        }
+        $this->authorize('delete', $post);
 
         $post->delete();
         return $this->redirect('/');
@@ -29,9 +28,13 @@ new class extends Component {
         <h3>{{$post->title}} by <i>{{$post->user->name}}</i></h3>
         {{$post->body}}
         <p><a href="/edit-post/{{$post->id}}">Edit</a></p>
-        <form wire:submit="delete({{ $post->id }})">
-            <button type="submit">Delete</button>
-        </form>
+        @can('delete', $post)
+            <form wire:submit="delete({{ $post->id }})">
+                <button type="submit">Delete</button>
+            </form>
+        @else
+            <p>You do not have permission to delete this post.</p>
+        @endcan
     </div>
     @endforeach
 </div>

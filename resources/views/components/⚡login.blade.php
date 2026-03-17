@@ -13,6 +13,7 @@ new class extends Component
     #[Validate('required')]
     public string $loginPassword;
 
+    // Attempt to log in the user
     public function login()
     {
         $credentials = $this->validate();

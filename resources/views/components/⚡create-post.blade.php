@@ -13,12 +13,11 @@ new class extends Component
     #[Validate('required|min:10')]
     public ?string $body = '';
 
+    // Save the new post if authorized
     public function save()
     {
-        if (! auth()->check()) {
-            session()->flash('error', 'You must be logged in to create a post.');
-            return $this->redirect('/');
-        }
+        $this->authorize('create', Post::class);
+
         $newPost = $this->validate();
         $newPost['title'] = strip_tags($newPost['title']);
         $newPost['body'] = strip_tags($newPost['body']);

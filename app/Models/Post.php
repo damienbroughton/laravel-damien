@@ -7,9 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    /** @use HasFactory<PostFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
     protected $fillable = ['title', 'body', 'user_id', 'external_id'];
 
+    /**
+     * Get the user that owns the post.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }

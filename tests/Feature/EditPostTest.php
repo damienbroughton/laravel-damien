@@ -40,7 +40,7 @@ it('blocks a user from editing another users post', function () {
         ->set('title', 'Updated Title by User 2')
         ->set('body', 'Updated Content by User 2')
         ->call('save')
-        ->assertRedirect('/');
+        ->assertStatus(403);
 
     // Assert the post was *not* updated in the database
     $this->assertDatabaseHas('posts', [

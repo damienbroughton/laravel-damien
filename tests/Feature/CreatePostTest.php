@@ -32,7 +32,7 @@ it('blocks an anonymous user from creating a post', function () {
         ->set('title', 'New Title by Anonymous')
         ->set('body', 'New Content by Anonymous')
         ->call('save')
-        ->assertRedirect('/');
+        ->assertStatus(403);
 
     // Assert the post was not created in the database
     $this->assertDatabaseMissing('posts', [

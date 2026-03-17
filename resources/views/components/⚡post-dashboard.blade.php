@@ -8,6 +8,7 @@ new class extends Component
     public $posts;
     public int $totalCount;
 
+    // Fetch the latest 10 posts and total count on each render
     public function render()
     {
         $this->posts = Post::latest()->take(10)->get();

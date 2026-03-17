@@ -18,12 +18,39 @@ Testing (Pest)
 php artisan test
 ```
 
-## Contributing
+### How to Run
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
+1. Install dependencies
+```bash
+php artisan schedule:work
+```
 
-Please make sure to update tests as appropriate.
+2. Configure environment
+Copy .env.example to .env
+Set database connection and run:
+```bash
+php artisan key:generate
+php artisan migrate
+```
+
+3. Run the development server
+```bash
+php artisan serve
+```
+
+4. Visit http://localhost:8000 in a browser.
+
+## Todo
+- Update blades to use livewire layout
+- Policies for users
+
+## Design highlights
+
+- Clean separation of concerns: Routing/controllers handle HTTP actions, while Livewire components encapsulate interactive UI state (forms, validation, polling).
+- Modern Laravel + PHP conventions: Eloquent ORM for data access and PHP attribute-based Livewire validation for readable, maintainable rules.
+- Security-minded defaults: Password hashing, input validation/sanitization, and authentication guards with clear user-facing error feedback.
+- Realtime updates without a heavy frontend: Livewire polling keeps the “Top Posts” dashboard current with minimal JavaScript complexity.
+- Built for iteration: Pest tests provide quick regression coverage for key workflows 
 
 ## License
 

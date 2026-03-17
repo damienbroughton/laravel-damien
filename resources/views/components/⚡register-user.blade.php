@@ -16,6 +16,7 @@ new class extends Component
     #[Validate('required|min:8|max:200')]
     public ?string $password = '';
 
+    // Save the new user and log them in
     public function save()
     {
         $credentials = $this->validate();
